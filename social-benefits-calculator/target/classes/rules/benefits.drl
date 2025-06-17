@@ -1,0 +1,20 @@
+package com.example.benefits.rules
+
+import com.example.benefits.model.BenefitRequest
+import com.example.benefits.model.BenefitResult
+
+rule "Low Income Bonus"
+when
+    $req : BenefitRequest( income < 20000 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 500);
+end
+
+rule "Child Allowance"
+when
+    $req : BenefitRequest( numChildren > 0 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + (200 * $req.getNumChildren()));
+end

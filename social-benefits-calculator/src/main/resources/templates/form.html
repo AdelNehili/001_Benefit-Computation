@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Benefits Form</title></head>
+<body>
+    <form th:action="@{/calculate}" method="post">
+        <input type="number" name="income" placeholder="Income" required>
+        <input type="number" name="numChildren" placeholder="Number of Children" required>
+        <button type="submit">Calculate</button>
+    </form>
+</body>
+</html>

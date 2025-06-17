@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Result</title></head>
+<body>
+    <h2>Benefit Calculation Result</h2>
+    <p>Income: <span th:text="${income}"></span></p>
+    <p>Children: <span th:text="${numChildren}"></span></p>
+    <p>Total Benefit: <strong th:text="${benefit}"></strong></p>
+    <a th:href="@{/export(income=${income},numChildren=${numChildren})}">Download as PDF</a>
+</body>
+</html>
