@@ -3,18 +3,67 @@ package com.example.benefits.rules
 import com.example.benefits.model.BenefitRequest
 import com.example.benefits.model.BenefitResult
 
-rule "Low Income Bonus"
+rule "Low Income Social Supplement"
 when
-    $req : BenefitRequest( income < 20000 )
+    $req : BenefitRequest( income < 40000, cadastralIncome <= 2000 )
     $res : BenefitResult()
 then
-    $res.setBenefit($res.getBenefit() + 500);
+    $res.setBenefit($res.getBenefit() + 150);
 end
 
-rule "Child Allowance"
+rule "Social Allowance Bracket 1"
 when
-    $req : BenefitRequest( numChildren > 0 )
+    $req : BenefitRequest( income >= 40187.19 && income <= 46885.06, numChildren >= 3 )
     $res : BenefitResult()
 then
-    $res.setBenefit($res.getBenefit() + (200 * $req.getNumChildren()));
+    $res.setBenefit($res.getBenefit() + 200);
+end
+
+rule "Child Basic Allowance under 39.8k"
+when
+    $req : BenefitRequest( income < 39792.84, numChildren > 0 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 186.51 * $req.getNumChildren());
+end
+
+rule "Child Social Supplement"
+when
+    $req : BenefitRequest( cadastralIncome <= 2000, income < 39792.84, numChildren > 0 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 62.17 * $req.getNumChildren());
+end
+
+rule "Orphan Supplement"
+when
+    $req : BenefitRequest( numOrphanedChildren > 0 )
+    $res : BenefitResult()
+then
+    // Half extra for one deceased parent, double for both
+    $res.setBenefit($res.getBenefit() + 0.5 * 186.51 * $req.getNumOrphanedChildren());
+end
+
+rule "Unemployment Benefit Tier 1"
+when
+    $req : BenefitRequest( status == "UNEMPLOYED", lastSalary != null, durationMonths <= 3 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 0.65 * $req.getLastSalary());
+end
+
+rule "Unemployment Benefit Tier 2"
+when
+    $req : BenefitRequest( status == "UNEMPLOYED", lastSalary != null, durationMonths > 3 && durationMonths <= 12 )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 0.60 * $req.getLastSalary());
+end
+
+rule "Guaranteed Minimum Income (RIS/GRAPA)"
+when
+    $req : BenefitRequest( age >= 18, income < 1263.17, status != "EMPLOYED" )
+    $res : BenefitResult()
+then
+    $res.setBenefit($res.getBenefit() + 1263.17);
 end

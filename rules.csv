@@ -1,0 +1,9 @@
+Situation ID , Income Range (€) , Cadastral Income , Status              , # Children , Orphans , Age  , Benefit Type                 , Monthly Amount (€/month)
+S1           , < 39 792.84      , ≤ 2000           , Any                 , ≥ 1        , 0       , —    , Basic Child Allowance        , 186.51 x children        
+S2           , < 39 792.84      , ≤ 2000           , Any                 , ≥ 1        , 0       , —    , Social Child Supplement      , 62.17 x children         
+S3           , income < 40 000  , ≤ 2000           , Any                 , Any        , Any     , —    , Low Income Social Supplement , \~150                    
+S4           , 40 187 - 46 885  , —                , Any                 , ≥ 3        , —       , —    , Social Allowance Bracket 1   , \~200                    
+S5           , Any              , —                , Any                 , ≥ 1        , ≥ 1     , —    , Orphan Supplement            , 0.5 x basic x orphans    
+S6           , Any              , —                , UNEMPLOYED          , Any        , —       , —    , Unemployment - Tier 1        , 65% salary (1st 3 mo)    
+S7           , Any              , —                , UNEMPLOYED          , Any        , —       , —    , Unemployment - Tier 2        , 60% salary (3-12 mo)     
+S8           , income < 1 263   , —                , Any except employed , Any        , —       , ≥ 18 , Guaranteed Minimum Income    , 1 263.17                 

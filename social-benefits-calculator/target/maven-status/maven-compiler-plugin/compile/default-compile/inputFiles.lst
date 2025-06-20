@@ -2,6 +2,7 @@
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/model/BenefitRequest.java
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/service/BenefitsService.java
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/utils/PdfGeneratorUtil.java
+/mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/model/CompareRequest.java
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/model/BenefitResult.java
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/BenefitsCalculatorApplication.java
 /mnt/c/Users/Sandra/OneDrive_EPHEC_asbl/Bureau/Polytech/0_Mes_projets/001_Benefit Computation/social-benefits-calculator/src/main/java/com/example/benefits/controller/BenefitController.java

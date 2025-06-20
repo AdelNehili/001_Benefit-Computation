@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BenefitsService {
+
     @Autowired
     private KieContainer kieContainer;
 
     public BenefitResult calculateBenefits(BenefitRequest request) {
-        KieSession kieSession = kieContainer.newKieSession();
+        KieSession kieSession = kieContainer.newKieSession("benefitSession");
         BenefitResult result = new BenefitResult();
         kieSession.insert(request);
         kieSession.insert(result);

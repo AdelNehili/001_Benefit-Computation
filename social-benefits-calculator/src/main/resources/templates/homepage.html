@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Welcome to the Home Page</h1>
+
+    <div class="button-container">
+        <form th:action="@{/form}" method="get">
+            <button type="submit">Go to Form Page</button>
+        </form>
+
+        <form th:action="@{/about}" method="get">
+            <button type="submit">About</button>
+        </form>
+
+        <form th:action="@{/contact}" method="get">
+            <button type="submit">Contact</button>
+        </form>
+    </div>
+</body>
+</html>
+

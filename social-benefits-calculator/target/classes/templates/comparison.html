@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Results</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Comparison Results</h1>
+
+    <div class="comparison-container">
+        <div class="scenario-block">
+            <h2>Scenario A</h2>
+            <p>Income: <span th:text="${requestA.income}"></span></p>
+            <p>Children: <span th:text="${requestA.numChildren}"></span></p>
+            <p>Benefit: <span th:text="${resultA.getBenefit()}"></span></p>
+        </div>
+
+        <div class="scenario-block">
+            <h2>Scenario B</h2>
+            <p>Income: <span th:text="${requestB.income}"></span></p>
+            <p>Children: <span th:text="${requestB.numChildren}"></span></p>
+            <p>Benefit: <span th:text="${resultB.benefit}"></span></p>
+        </div>
+    </div>
+</body>
+</html>
