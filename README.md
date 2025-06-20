@@ -15,4 +15,5 @@ The tool is designed to:
 
 ```bash
 git clone https://github.com/your-username/benefits-comparison.git
-cd benefits-comparison
+cd ./001_Benefit-Computation/
+./run.sh
