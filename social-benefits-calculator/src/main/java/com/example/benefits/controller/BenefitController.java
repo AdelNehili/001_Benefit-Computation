@@ -1,9 +1,9 @@
 package com.example.benefits.controller;
 
-import com.example.benefits.model.BenefitRequest;
-import com.example.benefits.model.BenefitResult;
-import com.example.benefits.model.CompareRequest;
-import com.example.benefits.service.BenefitsService;
+import com.example.benefits.model.benefit.BenefitRequest;
+import com.example.benefits.model.benefit.BenefitResult;
+import com.example.benefits.model.benefit.CompareRequest;
+import com.example.benefits.service.benefit.BenefitsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +32,12 @@ public class BenefitController {
         return "form"; //TO CHANGE
     }
     
+    @GetMapping("/login")
+    public String login(Model model) {
+        model.addAttribute("compareRequest", new CompareRequest());       
+        return "form"; //TO CHANGE
+    }
+
     //______________________________________________Interactions______________________________________________
     @GetMapping("/form")
     public String form(Model model) {

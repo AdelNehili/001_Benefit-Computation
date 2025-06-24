@@ -132,7 +132,7 @@ body {
 
 .horizontal-container.space-between {
     display: flex;
-    justify-content: space-between; /* ✅ left & right alignment */
+    justify-content: space-between; /* left & right alignment */
     align-items: center;            /* optional: vertical alignment */
     width: 100%;                    /* ensure it stretches */
 }

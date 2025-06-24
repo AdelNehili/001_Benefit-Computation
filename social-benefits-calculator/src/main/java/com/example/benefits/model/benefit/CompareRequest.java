@@ -1,4 +1,4 @@
-package com.example.benefits.model;
+package com.example.benefits.model.benefit;
 
 public class CompareRequest {
     private BenefitRequest requestA = new BenefitRequest();

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compare Scenarios</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Compare Two Scenarios</h1>
+
+    <form th:action="@{/compare}" th:object="${compareRequest}" method="post" class="form-container">
+ 
+        <div class="scenario-block">
+            <h3>Scenario A</h3>
+            <div class="horizontal-container space-between">
+                <label for = "income">Income A :</label>
+                <input type="number" id="income" th:field="*{requestA.income}" required>
+            </div>
+
+            <div class="horizontal-container space-between space-between">
+                <label for = "cadastralIncome">Cadastral Income A :</label>
+                <input type="number" id = "cadastralIncome" th:field="*{requestA.cadastralIncome}"required>
+            </div>
+
+            <div class="horizontal-container space-between">
+                <label for = "numChildren">Num Children A :</label>
+                <input type="number" id = "numChildren" th:field="*{requestA.numChildren}"required>
+            </div>
+            
+
+            <div class="horizontal-container space-between">
+                <label for = "numOrphanedChildren">Num Orphaned Children A :</label>
+                <input type="number" id = "numOrphanedChildren" th:field="*{requestA.numOrphanedChildren}"required>
+            </div>
+
+            <div class="horizontal-container space-between">
+                <label for = "durationMonths">Status durationMonths A :</label>
+                <input type="number" id = "durationMonths" th:field="*{requestA.durationMonths}"required>
+            </div>
+
+            <div class="horizontal-container space-between">
+                <label for = "lastSalary">Last Salary Value A :</label>
+                <input type="number" id = "lastSalary" th:field="*{requestA.lastSalary}"required>
+            </div>
+
+            <div class="horizontal-container space-between">
+                <label for = "status">Status A :</label>
+                <select id = "status" th:field="*{requestA.status}" required>
+                    <option value="" disabled selected>Select Status A</option>
+                    <option value="Employed">Employed</option>
+                    <option value="Unemployed">Unemployed</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+
+
+        <button type="submit">Compare</button>
+    </form>
+</body>
+</html>

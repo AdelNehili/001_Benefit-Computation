@@ -1,7 +1,7 @@
-package com.example.benefits.service;
+package com.example.benefits.service.benefit;
 
-import com.example.benefits.model.BenefitRequest;
-import com.example.benefits.model.BenefitResult;
+import com.example.benefits.model.benefit.BenefitRequest;
+import com.example.benefits.model.benefit.BenefitResult;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
