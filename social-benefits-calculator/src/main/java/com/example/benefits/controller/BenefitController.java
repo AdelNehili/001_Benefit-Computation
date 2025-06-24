@@ -51,8 +51,8 @@ public class BenefitController {
         return "login";
     }
 
-    @PostMapping("/dashboard")
-    public String dashboard(
+    @PostMapping("/login")
+    public String login(
         @ModelAttribute LoginRequest loginRequest,
         Model model) {
 
@@ -64,7 +64,7 @@ public class BenefitController {
         
 
         model.addAttribute("LoginRequest", new LoginRequest());       
-        return "login";
+        return "login"; //To modify into dashboard once the login setup is finished
     }
     
 

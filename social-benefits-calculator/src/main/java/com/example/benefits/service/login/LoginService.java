@@ -1,11 +1,7 @@
 package com.example.benefits.service.login;
 
-import com.example.benefits.model.login.LoginRequest;
-import com.example.benefits.model.login.LoginResult;
-
-
-import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
+import com.example.benefits.model.login.*;
+import com.example.benefits.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +9,32 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    private KieContainer kieContainer;
+    private UserRepository userRepository;
 
     public LoginResult manageLogin(LoginRequest request) {
-        KieSession kieSession = kieContainer.newKieSession("LoginSession");
-
         LoginResult result = new LoginResult();
-        kieSession.insert(request);
-        kieSession.insert(result);
 
-        kieSession.fireAllRules();
-        kieSession.dispose();
+        // Check by username or email
+        var userOpt = userRepository.findByUsername(request.getIdentifier());
+        if (userOpt.isEmpty()) {
+            userOpt = userRepository.findByEmail(request.getIdentifier());
+        }
+
+        if (userOpt.isPresent()) {
+            var user = userOpt.get();
+            if (user.getPassword().equals(request.getPassword())) {
+                result.setUsername(user.getUsername());
+                result.setMail(user.getEmail());
+                result.setErrorCode(0);
+            } else {
+                result.setErrorMsg("Incorrect password");
+                result.setErrorCode(2);
+            }
+        } else {
+            result.setErrorMsg("User not found");
+            result.setErrorCode(1);
+        }
+
         return result;
     }
 }

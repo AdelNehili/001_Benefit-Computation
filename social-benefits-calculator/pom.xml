@@ -80,12 +80,27 @@
             <version>1.0.10</version>
         </dependency>
 
-        <!-- ✅ Lombok (optional but helpful) -->
+        <!-- ✅ Lombok (optional but helpful for auto getter/setter) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Spring Data JPA -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- PostgreSQL driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.1</version> <!-- or latest -->
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
@@ -98,6 +113,7 @@
                 <version>${spring-boot.version}</version>
             </plugin>
 
+            
             <!-- ✅ Maven Compiler Plugin with Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
