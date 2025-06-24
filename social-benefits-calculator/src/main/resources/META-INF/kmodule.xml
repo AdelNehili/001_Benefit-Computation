@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase name="benefitRules" packages="com.example.benefits.rules">
+
+    <kbase name="benefits" packages="resources.rules">
         <ksession name="benefitSession"/>
     </kbase>
+    
+    <kbase name="login" packages="resources.rules">
+        <ksession name="LoginSession"/>
+    </kbase>
+    
 </kmodule>

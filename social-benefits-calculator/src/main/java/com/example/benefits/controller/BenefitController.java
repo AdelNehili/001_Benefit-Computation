@@ -1,9 +1,18 @@
 package com.example.benefits.controller;
 
+
+//Login Packages
+import com.example.benefits.model.login.LoginRequest;
+import com.example.benefits.model.login.LoginResult;
+import com.example.benefits.service.login.LoginService;
+
+//Benefit Packages
 import com.example.benefits.model.benefit.BenefitRequest;
 import com.example.benefits.model.benefit.BenefitResult;
 import com.example.benefits.model.benefit.CompareRequest;
 import com.example.benefits.service.benefit.BenefitsService;
+
+//Basic Packages
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +23,9 @@ public class BenefitController {
 
     @Autowired
     private BenefitsService benefitsService;
+    @Autowired
+    private LoginService loginService;
+    
     //____________________________________________Basic informations____________________________________________
     @GetMapping("/")
     public String homePage() {   
@@ -32,13 +44,31 @@ public class BenefitController {
         return "form"; //TO CHANGE
     }
     
+    //______________________________________________Login & Dashboard______________________________________________
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("compareRequest", new CompareRequest());       
-        return "form"; //TO CHANGE
+        model.addAttribute("LoginRequest", new LoginRequest());       
+        return "login";
     }
 
-    //______________________________________________Interactions______________________________________________
+    @PostMapping("/dashboard")
+    public String dashboard(
+        @ModelAttribute LoginRequest loginRequest,
+        Model model) {
+
+        LoginResult loginResult = loginService.manageLogin(loginRequest);
+
+        System.out.println("Result:");
+        System.out.println(loginRequest.introduce_informations());
+        System.out.println(loginResult.introduce_informations());
+        
+
+        model.addAttribute("LoginRequest", new LoginRequest());       
+        return "login";
+    }
+    
+
+    //______________________________________________Form and Request comparison______________________________________________
     @GetMapping("/form")
     public String form(Model model) {
         model.addAttribute("compareRequest", new CompareRequest());       
@@ -65,6 +95,6 @@ public class BenefitController {
         model.addAttribute("resultA", resultA);
         model.addAttribute("resultB", resultB);
 
-        return "comparison"; // comparison.html will display both
+        return "comparison"; // comparison.html will display both requests
     }
 }

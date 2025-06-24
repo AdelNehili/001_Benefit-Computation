@@ -1,7 +1,9 @@
 package com.example.benefits.service.login;
 
-import com.example.benefits.model.benefit.BenefitRequest;
-import com.example.benefits.model.benefit.BenefitResult;
+import com.example.benefits.model.login.LoginRequest;
+import com.example.benefits.model.login.LoginResult;
+
+
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,13 @@ public class LoginService {
     @Autowired
     private KieContainer kieContainer;
 
-    public BenefitResult calculateBenefits(BenefitRequest request) {
-        KieSession kieSession = kieContainer.newKieSession("benefitSession");
-        BenefitResult result = new BenefitResult();
+    public LoginResult manageLogin(LoginRequest request) {
+        KieSession kieSession = kieContainer.newKieSession("LoginSession");
+
+        LoginResult result = new LoginResult();
         kieSession.insert(request);
         kieSession.insert(result);
+
         kieSession.fireAllRules();
         kieSession.dispose();
         return result;

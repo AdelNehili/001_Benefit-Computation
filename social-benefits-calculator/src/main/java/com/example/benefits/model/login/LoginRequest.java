@@ -4,7 +4,11 @@ import lombok.Data;
 
 @Data
 public class LoginRequest {
-    private String username;
+    private String identifier; //Can be Mail or Username (to check with the Drools rules)
     private String password;
-    private String mail;
+
+    public String introduce_informations(){
+        String sentence = "LoginRequest informations (identifier/password): " + this.getIdentifier() + ", " + this.getPassword();
+        return sentence;
+    }
 }

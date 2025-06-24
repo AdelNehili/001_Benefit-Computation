@@ -1,4 +1,4 @@
-package com.example.benefits.rules
+package resources.rules
 
 import com.example.benefits.model.benefit.BenefitRequest
 import com.example.benefits.model.benefit.BenefitResult

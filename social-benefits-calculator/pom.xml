@@ -17,6 +17,7 @@
         <java.version>17</java.version>
         <spring-boot.version>3.2.4</spring-boot.version>
         <lombok.version>1.18.30</lombok.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <!-- ✅ Add JBoss repository for Drools dependencies -->

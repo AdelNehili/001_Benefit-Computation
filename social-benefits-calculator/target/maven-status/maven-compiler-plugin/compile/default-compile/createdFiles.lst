@@ -2,6 +2,7 @@ com/example/benefits/config/DroolsConfig.class
 com/example/benefits/BenefitsCalculatorApplication.class
 com/example/benefits/model/benefit/CompareRequest.class
 com/example/benefits/service/login/LoginService.class
+com/example/benefits/model/login/LoginResult.class
 com/example/benefits/controller/BenefitController.class
 com/example/benefits/model/benefit/BenefitResult.class
 com/example/benefits/model/login/LoginRequest.class

@@ -1,0 +1,15 @@
+package resources.rules
+
+import com.example.benefits.model.login.LoginRequest
+import com.example.benefits.model.login.LoginResult
+
+
+rule "Not Long Enough Password"
+when
+    $req : LoginRequest( password.length() < 2)
+    $res : LoginResult()
+then
+    $res.setErrorMsg("Password : not long enough");
+    $res.setErrorCode(-1);
+    
+end
