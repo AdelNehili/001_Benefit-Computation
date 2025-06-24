@@ -9,7 +9,15 @@ public class LoginResult {
     private String mail = "empty";
     
     private String errorMsg = "";
+    /*
+    errorCode = -1 : default
+    errorCode =  0 : Correct Login
+    errorCode =  1 : User not found in DB
+    errorCode =  2 : Incorrect password
+    */
+
     private int errorCode = -1;
+
 
     public String introduce_informations(){
         String sentence = "LoginResult informations (error_msg/error_code): " + this.getErrorMsg() + ", " + this.getErrorCode()+"\n";

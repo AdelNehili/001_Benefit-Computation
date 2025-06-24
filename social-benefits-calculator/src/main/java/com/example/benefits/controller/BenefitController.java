@@ -63,8 +63,8 @@ public class BenefitController {
         System.out.println(loginResult.introduce_informations());
         
 
-        model.addAttribute("LoginRequest", new LoginRequest());       
-        return "login"; //To modify into dashboard once the login setup is finished
+        model.addAttribute("loginResult", loginResult);       
+        return "dashboard";
     }
     
 

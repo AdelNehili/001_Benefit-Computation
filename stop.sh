@@ -12,3 +12,7 @@ fi
 echo "Stopping Docker container (benefits-db)..."
 docker stop benefits-db >/dev/null
 
+#PID=$(lsof -t -i :8080) && kill -9 $PID && echo "Killed process $PID" || echo "No process found on port 8080"
+
+
+

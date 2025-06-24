@@ -25,6 +25,7 @@ public class LoginService {
             if (user.getPassword().equals(request.getPassword())) {
                 result.setUsername(user.getUsername());
                 result.setMail(user.getEmail());
+                result.setErrorMsg("All good : No Errors");
                 result.setErrorCode(0);
             } else {
                 result.setErrorMsg("Incorrect password");
