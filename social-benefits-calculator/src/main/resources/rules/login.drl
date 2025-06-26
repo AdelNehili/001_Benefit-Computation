@@ -1,4 +1,4 @@
-package resources.rules
+package rules
 
 import com.example.benefits.model.login.LoginRequest
 import com.example.benefits.model.login.LoginResult

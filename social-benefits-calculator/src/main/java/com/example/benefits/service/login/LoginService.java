@@ -15,9 +15,11 @@ public class LoginService {
         LoginResult result = new LoginResult();
 
         // Check by username or email
-        var userOpt = userRepository.findByUsername(request.getIdentifier());
+        String identifier = request.getIdentifier();
+        var userOpt = userRepository.findByUsernameIgnoreCase(identifier);
+
         if (userOpt.isEmpty()) {
-            userOpt = userRepository.findByEmail(request.getIdentifier());
+            userOpt = userRepository.findByEmail(identifier);
         }
 
         if (userOpt.isPresent()) {

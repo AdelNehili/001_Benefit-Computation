@@ -28,46 +28,37 @@ EOF
 # Handle input argument
 case "$1" in
   create)
-    if [ "$(docker ps -a -q -f name=$docker_name)" ]; then
-      echo "Container '$docker_name' already exists."
-    else
-      echo "Creating and starting container '$docker_name'..."
-      docker run --name $docker_name \
-        -e POSTGRES_USER=$db_user \
-        -e POSTGRES_PASSWORD=$db_pass \
-        -e POSTGRES_DB=$db_name \
-        -p 5432:5432 \
-        -d postgres
-    fi
+    docker run --name benefits-db \
+      -e POSTGRES_USER=benefits_user \
+      -e POSTGRES_PASSWORD=benefits_pass \
+      -e POSTGRES_DB=benefits_db \
+      -p 5432:5432 \
+      -d postgres
     ;;
   start)
-    if [ "$(docker ps -q -f name=$docker_name)" ]; then
-      echo "Container '$docker_name' is already running."
-    else
-      echo "Starting container '$docker_name'..."
-      docker start $docker_name
-    fi
+    docker start $docker_name
+    docker ps -a
     ;;
-  query)
-    if [ "$(docker ps -q -f name=$docker_name)" ]; then
-      echo "Running SQL query..."
-      docker exec -it $docker_name psql -U $db_user -d $db_name -c "SELECT * FROM users;"
-    else
-      echo "Error: Container '$docker_name' is not running. Start it first with '$0 start'."
-    fi
+  query_select)
+    docker exec -it $docker_name psql -U $db_user -d $db_name -c "SELECT * FROM users;"
     ;;
+  query_add)
+    docker exec -it $docker_name psql -U $db_user -d $db_name \
+      -c "INSERT INTO users (username, email, password) VALUES ('Alice', 'alice@example.com',1111);"\
+      -c "INSERT INTO users (username, email, password) VALUES ('Bob', 'Bob@example.com',2222);"\
+      -c "INSERT INTO users (username, email, password) VALUES ('Camille', 'Camille@example.com',3333);"\
+      
+    ;;
+  clean_db)
+    docker exec -it $docker_name psql -U $db_user -d $db_name \
+      "DELETE FROM users;"
+    ;;
+  
   stop)
-    if [ "$(docker ps -q -f name=$docker_name)" ]; then
-      echo "Stopping container '$docker_name'..."
-      docker stop $docker_name
-    else
-      echo "Container '$docker_name' is not running."
-    fi
+    docker stop $docker_name
     ;;
   help|*)
     show_help
     ;;
 esac
 
-#docker stop
-docker stop $docker_name

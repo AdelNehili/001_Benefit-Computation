@@ -63,8 +63,15 @@ public class BenefitController {
         System.out.println(loginResult.introduce_informations());
         
 
-        model.addAttribute("loginResult", loginResult);       
-        return "dashboard";
+        
+
+        if (loginResult.getErrorCode() == 0){
+            model.addAttribute("loginResult", loginResult);
+            return "dashboard";
+        }else{
+            model.addAttribute("LoginRequest", new LoginRequest());   
+            return "login";
+        }
     }
     
 
