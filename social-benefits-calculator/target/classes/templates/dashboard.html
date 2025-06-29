@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <div class="form-container">
         <h1 th:text="'Welcome, ' + ${loginResult.username} + '!'">Welcome, User!</h1>
 
-        <p><strong>Email:</strong> <span th:text="${loginResult.mail}">user@example.com</span></p>
-        <p><strong>Error Message:</strong> <span th:text="${loginResult.errorMsg}">No error</span></p>
-        <p><strong>Error Code:</strong> <span th:text="${loginResult.errorCode}">0</span></p>
+        <div class="info-group">
+            <p><strong>Email:</strong> <span th:text="${loginResult.mail}">user@example.com</span></p>
+            <p><strong>Error Message:</strong> <span th:text="${loginResult.errorMsg}">No error</span></p>
+            <p><strong>Error Code:</strong> <span th:text="${loginResult.errorCode}">0</span></p>
+        </div>
     </div>
 </body>
 </html>

@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+# Ask for sudo upfront
+if [ "$EUID" -ne 0 ]; then
+  echo "This script requires superuser privileges. Prompting for sudo..."
+  sudo "$0" "$@"
+  exit $?
+fi
+
 # Stop Spring Boot app
 if [ -f social-benefits-calculator/app.pid ]; then
     PID=$(cat social-benefits-calculator/app.pid)
@@ -14,7 +22,7 @@ fi
 docker stop benefits-db >/dev/null 2>&1 && echo "Stopped Docker container 'benefits-db'." || echo "Container 'benefits-db' was not running."
 
 # Free port 5432 (PostgreSQL)
-PORT_5432_PID=$(lsof -t -i :5432)
+PORT_5432_PID=$(sudo lsof -t -i :5432)
 if [ -n "$PORT_5432_PID" ]; then
     kill -9 $PORT_5432_PID && echo "Freed port 5432."
 else
@@ -22,7 +30,7 @@ else
 fi
 
 # Free port 8080 (Spring Boot)
-PORT_8080_PID=$(lsof -t -i :8080)
+PORT_8080_PID=$(sudo lsof -t -i :8080)
 if [ -n "$PORT_8080_PID" ]; then
     kill -9 $PORT_8080_PID && echo "Freed port 8080."
 else
@@ -34,5 +42,5 @@ echo "Checking phase"
 #docker ps -a --filter "name=benefits-db"
 
 docker ps -a
-lsof -t -i :8080
-lsof -t -i :5432
+sudo lsof -t -i :8080
+sudo lsof -t -i :5432
