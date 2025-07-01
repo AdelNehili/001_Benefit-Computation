@@ -16,7 +16,7 @@ def print_dir_tree(startpath, exclude_dirs=None):
         for f in files:
             print(f"{subindent}{f}")
 
-exclude_list = ['.git', '.import', '__pycache__']
+exclude_list = ['.git', '.import', '__pycache__','target']
 
 root_folder = "./"
 print_dir_tree(root_folder, exclude_list)

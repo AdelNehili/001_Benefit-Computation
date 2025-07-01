@@ -106,15 +106,21 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot plugin -->
+            <!-- ✅ Spring Boot plugin with repackage goal -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>3.2.0</version> <!-- Or use ${spring-boot.version} consistently -->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
-            
-            <!-- ✅ Maven Compiler Plugin with Java 17 -->
+            <!-- ✅ Maven Compiler Plugin for Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

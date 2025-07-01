@@ -40,14 +40,21 @@ case "$1" in
     docker ps -a
     ;;
   query_select)
+    docker start $docker_name
     docker exec -it $docker_name psql -U $db_user -d $db_name -c "SELECT * FROM users;"
     ;;
   query_add)
+    docker start $docker_name
     docker exec -it $docker_name psql -U $db_user -d $db_name \
-      -c "INSERT INTO users (username, email, password) VALUES ('Alice', 'alice@example.com',1111);"\
-      -c "INSERT INTO users (username, email, password) VALUES ('Bob', 'Bob@example.com',2222);"\
-      -c "INSERT INTO users (username, email, password) VALUES ('Camille', 'Camille@example.com',3333);"\
-      
+      -c "CREATE TABLE IF NOT EXISTS users (
+             id SERIAL PRIMARY KEY,
+             username VARCHAR(50),
+             email VARCHAR(100),
+             password VARCHAR(100)
+         );" \
+      -c "INSERT INTO users (username, email, password) VALUES ('Alice', 'alice@example.com', 1111);" \
+      -c "INSERT INTO users (username, email, password) VALUES ('Bob', 'Bob@example.com', 2222);" \
+      -c "INSERT INTO users (username, email, password) VALUES ('Camille', 'Camille@example.com', 3333);" 
     ;;
   clean_db)
     docker exec -it $docker_name psql -U $db_user -d $db_name \
@@ -57,6 +64,10 @@ case "$1" in
   stop)
     docker stop $docker_name
     ;;
+  rm)
+    docker rm $docker_name
+    ;;
+  
   help|*)
     show_help
     ;;
