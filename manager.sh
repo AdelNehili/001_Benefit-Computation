@@ -47,7 +47,15 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 EOF
 
-# Step 4: Start Spring Boot app container
+# Step 4.1: Update the app_image if the project has been modified
+case "$1" in
+  update)
+    echo "Hehe so we're asking for an $app_image UPDATE ;)"
+    docker build -t $app_image .
+  ;;
+esac
+
+# Step 4.2: Start Spring Boot app container
 if docker ps -a --format '{{.Names}}' | grep -q "^$app_container$"; then
   echo "♻️ Removing old Spring Boot container '$app_container'..."
   docker rm -f "$app_container" > /dev/null
