@@ -29,6 +29,10 @@ The project aims to learn the whole path from UI to server's communications.
         │       └── templates/                # Thymeleaf HTML templates for data sharing between users and server
         └── test/                             # Unit and integration tests
 ```
+<video width="400" controls>
+  <source src="media/demo_1_web_app.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## ⚙️ Technologies Used
 
@@ -84,4 +88,5 @@ Ensure PostgreSQL is running and configured properly, then:
 ```bash
 ./stop.sh
 ```
+
 
