@@ -40,8 +40,13 @@ fi
 echo ""
 echo "Checking phase"
 #docker ps -a --filter "name=benefits-db"
-#sudo docker rm benefits-app
-docker stop benefits-app
+case "$1" in
+    rm)
+        echo "Bye bye benefits-app"
+        sudo docker rm benefits-app
+        ;;
+esac
+
 docker ps -a
 sudo lsof -t -i :8080
 sudo lsof -t -i :5432

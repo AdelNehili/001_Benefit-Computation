@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Usefull for 
 docker_name="benefits-db"
 db_user="benefits_user"
 db_pass="benefits_pass"
